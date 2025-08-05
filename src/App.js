@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, Mail, MapPin, Linkedin, Twitter, Facebook, MessageCircle, Star, ChevronDown, ArrowRight, Sparkles, Zap, Target, Eye } from 'lucide-react';
+import { Menu, X, Phone, Mail, MapPin, Linkedin, Twitter, Facebook, MessageCircle, Star, ArrowRight, Sparkles, Zap, Target, Eye } from 'lucide-react';
 
 const NexoraPortfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  const [activeSection, setActiveSection] = useState('home');
+
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -453,7 +453,7 @@ const NexoraPortfolio = () => {
                     { icon: <span className="text-white font-bold text-sm">P</span>, color: "from-red-500 to-red-600" },
                     { icon: <MessageCircle className="w-5 h-5 text-white" />, color: "from-green-500 to-green-600" }
                   ].map((social, index) => (
-                    <a key={index} href="#" className={`w-12 h-12 bg-gradient-to-r ${social.color} rounded-2xl flex items-center justify-center hover:shadow-2xl transform hover:-translate-y-2 hover:scale-110 transition-all duration-300`}>
+                    <a key={index} href="#addr" className={`w-12 h-12 bg-gradient-to-r ${social.color} rounded-2xl flex items-center justify-center hover:shadow-2xl transform hover:-translate-y-2 hover:scale-110 transition-all duration-300`}>
                       {social.icon}
                     </a>
                   ))}
@@ -539,7 +539,7 @@ const NexoraPortfolio = () => {
 
             <div className="flex justify-center space-x-8 mb-10">
               {['Privacy Policy', 'Terms of Service', 'Support'].map((link, index) => (
-                <a key={index} href="#" className="text-gray-400 hover:text-[#0A9BEA] transition-colors duration-300 font-medium hover:underline">
+                <a key={index} href="#eer" className="text-gray-400 hover:text-[#0A9BEA] transition-colors duration-300 font-medium hover:underline">
                   {link}
                 </a>
               ))}
