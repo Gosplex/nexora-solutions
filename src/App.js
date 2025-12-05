@@ -152,7 +152,11 @@ const NexoraPortfolio = () => {
                 <div className="absolute -inset-1 bg-gradient-to-r from-[#0A9BEA] to-[#012D3E] rounded-2xl opacity-30 group-hover:opacity-60 blur transition-all duration-300"></div>
               </div>
               <div>
-                <h1 className="text-xl font-black text-gray-900 tracking-tight">NEXORA SOLUTIONS</h1>
+                <h1 className="text-xl font-black tracking-tight">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0A9BEA] to-[#012D3E] animate-gradient">
+                    NEXORA SOLUTIONS
+                  </span>
+                </h1>
                 <p className="text-xs text-[#0A9BEA] font-bold tracking-widest">THE AURA BEHIND YOUR SUCCESS</p>
               </div>
             </div>
@@ -462,7 +466,6 @@ const NexoraPortfolio = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
             {features.map((feature, i) => (
-
               <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -473,24 +476,30 @@ const NexoraPortfolio = () => {
                 className="text-center p-8 rounded-2xl"
                 style={{ backgroundColor: "#f8fafc" }}
               >
-
+                {/* Animated Gradient Icon Background */}
                 <motion.div
-                  whileHover={{ rotate: 360 }}
+                  whileHover={{ rotate: 360, scale: 1.15 }}
                   transition={{ duration: 0.6 }}
-                  className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center text-white"
-                  style={{ backgroundColor: "#0C9BEA" }}
+                  className="w-20 h-20 mx-auto mb-6 rounded-3xl flex items-center justify-center shadow-2xl relative overflow-hidden"
                 >
-                  {feature.icon}
+                  {/* Gradient Background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#0A9BEA] to-[#012D3E] animate-gradient"></div>
+
+                  {/* Optional subtle overlay glow */}
+                  <div className="absolute inset-0 bg-white opacity-10"></div>
+
+                  {/* Icon on top */}
+                  <div className="relative z-10 text-white">
+                    {feature.icon}
+                  </div>
                 </motion.div>
 
                 <h3 className="text-xl font-bold mb-2" style={{ color: "#002D3F" }}>
                   {feature.title}
                 </h3>
 
-                <p className="text-gray-600">{feature.desc}</p>
-
+                <p className="text-gray-600 leading-relaxed">{feature.desc}</p>
               </motion.div>
-
             ))}
 
           </div>
@@ -880,6 +889,18 @@ const NexoraPortfolio = () => {
 
       {/* ================================================= CUSTOM STYLES ================================================= */}
       <style jsx>{`
+
+      @keyframes gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 8s ease infinite;
+}
+
+
         @keyframes fadeInLeft {
           from { opacity: 0; transform: translateX(-50px); }
           to   { opacity: 1; transform: translateX(0); }
