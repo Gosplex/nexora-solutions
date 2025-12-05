@@ -453,9 +453,12 @@ const NexoraPortfolio = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-4" style={{ color: "#002D3F" }}>
-              Why Choose <span style={{ color: "#0C9BEA" }}>Nexora?</span>
+            <h2 className="text-5xl md:text-6xl font-black text-center mb-6">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0A9BEA] to-[#012D3E] animate-gradient">
+                Why Choose Nexora?
+              </span>
             </h2>
+
 
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               We bring experience, expertise, and excellence to every project.
