@@ -775,7 +775,7 @@ const NexoraPortfolio = () => {
                 {[Facebook, Twitter, Linkedin, Instagram].map((Icon, i) => (
                   <a
                     key={i}
-                    href="#"
+                    href="https://facebook.com"
                     className="w-12 h-12 bg-gray-700 hover:bg-[#0C9BEA] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
                   >
                     <Icon size={22} />
@@ -834,7 +834,7 @@ const NexoraPortfolio = () => {
               <ul className="space-y-3 text-gray-200">
                 {["About Us", "Portfolio", "Careers", "Blog", "Privacy"].map((item) => (
                   <li key={item}>
-                    <a href="#" className="hover:text-white transition">{item}</a>
+                    <a href="https://facebook.com" className="hover:text-white transition">{item}</a>
                   </li>
                 ))}
               </ul>
