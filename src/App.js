@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Menu, X, Phone, Mail, MapPin, Linkedin, Twitter, Facebook,
+  X, Phone, Mail, MapPin, Linkedin, Twitter, Facebook,
   MessageCircle, Star, ArrowRight, Sparkles, Zap, Target, Eye,
   Instagram, CheckCircle, Globe, Award, Users, Clock
 } from 'lucide-react';
