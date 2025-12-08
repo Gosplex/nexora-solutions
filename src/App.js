@@ -146,8 +146,12 @@ const NexoraPortfolio = () => {
             {/* Logo */}
             <div className="flex items-center space-x-3 group cursor-pointer">
               <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-r from-[#0A9BEA] to-[#012D3E] rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-all duration-300 group-hover:scale-110">
-                  <span className="text-white font-bold text-xl">N</span>
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center">
+                  <img
+                    src="/assets/logo.png"
+                    alt="icon"
+                    className="w-12 h-12 object-contain"
+                  />
                 </div>
                 <div className="absolute -inset-1 bg-gradient-to-r from-[#0A9BEA] to-[#012D3E] rounded-2xl opacity-30 group-hover:opacity-60 blur transition-all duration-300"></div>
               </div>
