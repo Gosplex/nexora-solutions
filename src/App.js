@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import {
-  X, Phone, Mail, MapPin, Linkedin, Twitter, Facebook,
+  X, Phone, Mail, MapPin, Linkedin, Twitter,
   MessageCircle, Star, ArrowRight, Sparkles, Zap, Target, Eye,
   Instagram, CheckCircle, Globe, Award, Users, Clock
 } from 'lucide-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPinterest } from '@fortawesome/free-brands-svg-icons';
+import { faMicrosoft } from '@fortawesome/free-brands-svg-icons';
+
+
 import { motion, AnimatePresence } from 'framer-motion';
 
 
@@ -34,6 +39,13 @@ const NexoraPortfolio = () => {
     { icon: <Clock className="w-8 h-8" />, title: "24/7 Support", desc: "Always here when you need us, anytime" }
   ];
 
+  const socialIcons = [
+    { type: 'lucide', icon: Linkedin, url: 'https://linkedin.com' },
+    { type: 'lucide', icon: Twitter, url: 'https://twitter.com' },
+    { type: 'lucide', icon: Instagram, url: 'https://instagram.com' },
+    { type: 'fa', icon: faPinterest, url: 'https://pinterest.com' },
+  ];
+
 
   const services = [
     {
@@ -48,14 +60,14 @@ const NexoraPortfolio = () => {
       icon: "💻",
       gradient: "from-[#FF6B6B] to-[#C70039]"
     },
+    // {
+    //   title: "Graphic Designing",
+    //   description: "Craft stunning visual content including logos, banners, and marketing creatives that leave an impression.",
+    //   icon: "🎨",
+    //   gradient: "from-[#FFC312] to-[#EE5A24]"
+    // },
     {
-      title: "Graphic Designing",
-      description: "Craft stunning visual content including logos, banners, and marketing creatives that leave an impression.",
-      icon: "🎨",
-      gradient: "from-[#FFC312] to-[#EE5A24]"
-    },
-    {
-      title: "UI/UX Design",
+      title: "UI/UX Design & Graphic Designing",
       description: "Design intuitive and user-friendly interfaces that enhance user satisfaction and retention.",
       icon: "🖌️",
       gradient: "from-[#12CBC4] to-[#0652DD]"
@@ -394,17 +406,17 @@ const NexoraPortfolio = () => {
               {
                 icon: <Target className="w-8 h-8 text-white" />,
                 title: "Our Mission",
-                description: "To empower businesses with technology solutions and strategic services that drive exponential growth."
+                description: "We help businesses grow faster with smart digital solutions that strengthen their brand and turn great ideas into real results."
               },
               {
                 icon: <Eye className="w-8 h-8 text-white" />,
                 title: "Our Vision",
-                description: "To be the global leader in transformative digital solutions, creating unprecedented value."
+                description: "To become a globally trusted leader in cutting edge technology solutions, driving a future where every business can harness the full power of digital transformation."
               },
               {
                 icon: <Zap className="w-8 h-8 text-white" />,
                 title: "Our Values",
-                description: "Excellence, innovation, integrity, and customer success define our DNA."
+                description: "We stand for excellence, innovation, integrity, and customer success in everything we do."
               }
 
             ].map((item, index) => (
@@ -573,7 +585,7 @@ const NexoraPortfolio = () => {
 
             <h2 className="text-5xl md:text-6xl font-black text-center mb-6">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0A9BEA] to-[#012D3E] animate-gradient">
-                Our Premium Services
+                Our Services
               </span>
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
@@ -779,16 +791,23 @@ const NexoraPortfolio = () => {
               <p className="text-gray-200 mb-8 leading-relaxed">The Aura Behind Your Success.</p>
 
               <div className="flex gap-4">
-                {[Facebook, Twitter, Linkedin, Instagram].map((Icon, i) => (
+                {socialIcons.map((item, i) => (
                   <a
                     key={i}
-                    href="https://facebook.com"
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-12 h-12 bg-gray-700 hover:bg-[#0C9BEA] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
                   >
-                    <Icon size={22} />
+                    {item.type === 'lucide' ? (
+                      <item.icon size={22} strokeWidth={1.75} />
+                    ) : (
+                      <FontAwesomeIcon icon={item.icon} className="text-[22px]" />
+                    )}
                   </a>
                 ))}
               </div>
+
 
             </div>
 
@@ -799,15 +818,15 @@ const NexoraPortfolio = () => {
               <h3 className="text-xl font-bold mb-6">Hire Developers</h3>
               <ul className="space-y-3 text-gray-200">
                 {[
-                  "Hire Flutter Developer",
-                  "Hire React Native Developer",
                   "Hire .NET Developer",
-                  "Hire React JS Developer",
-                  "Hire Node.js Developer",
-                  "Hire Angular Developer",
-                  "Hire Vue.js Developer",
-                  "Hire UI/UX Designer",
-                  "Hire Digital Marketer"
+                  "Hire C# Developer",
+                  "Hire React Native Developer",
+                  "Hire ReactJS Developer",
+                  "Hire Blazor Developer",
+                  "Hire Flutter Developer",
+                  "Hire Laravel Developer",
+                  "Hire Graphics Designer",
+                  "Hire Digital Marketer",
                 ].map((item) => (
                   <li key={item}>
                     <a href="#contact" className="hover:text-white transition">{item}</a>
@@ -822,7 +841,7 @@ const NexoraPortfolio = () => {
             <div>
               <h3 className="text-xl font-bold mb-6">Services</h3>
               <ul className="space-y-3 text-gray-200">
-                {["Mobile Apps", "Web Dev", "UI/UX Design", "Marketing", "IT Staffing"].map((item) => (
+                {["Mobile Apps", "Web Development", "Graphic Designing", "UI/UX Designing", "Digital Marketing", "IT Staffing"].map((item) => (
                   <li key={item} className="flex items-center gap-2">
                     <CheckCircle size={16} className="text-white flex-shrink-0" />
                     <a href="#services" className="hover:text-white transition">
@@ -839,7 +858,7 @@ const NexoraPortfolio = () => {
             <div>
               <h3 className="text-xl font-bold mb-6">Company</h3>
               <ul className="space-y-3 text-gray-200">
-                {["About Us", "Portfolio", "Careers", "Blog", "Privacy"].map((item) => (
+                {["About Us", "Careers", "Privacy"].map((item) => (
                   <li key={item}>
                     <a href="https://facebook.com" className="hover:text-white transition">{item}</a>
                   </li>
@@ -866,14 +885,28 @@ const NexoraPortfolio = () => {
                 </div>
 
                 <div className="flex items-start gap-4">
+                  <FontAwesomeIcon
+                    icon={faMicrosoft}
+                    className="mt-1 flex-shrink-0 text-[20px]"
+                  />
+                  <span>Microsoft Teams</span>
+                </div>
+
+                <div className="flex items-start gap-4">
                   <MapPin size={20} className="mt-1 flex-shrink-0" />
                   <span>Ahmedabad, Gujarat</span>
                 </div>
 
-                <div className="flex items-start gap-4">
+                <a
+                  href="https://nexorasolutions.netlify.app/"
+                  target="_self"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-4 hover:underline"
+                >
                   <Globe size={20} className="mt-1 flex-shrink-0" />
                   <span>nexorasolution.com</span>
-                </div>
+                </a>
+
 
               </div>
 
