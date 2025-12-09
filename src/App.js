@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import {
-  X, Phone, Mail, MapPin, Linkedin, Twitter,
-  MessageCircle, Star, ArrowRight, Sparkles, Zap, Target, Eye,
-  Instagram, CheckCircle, Globe, Award, Users, Clock
-} from 'lucide-react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPinterest } from '@fortawesome/free-brands-svg-icons';
-import { faMicrosoft } from '@fortawesome/free-brands-svg-icons';
+// import React, { useState, useEffect } from 'react';
+// import {
+//   X, Phone, Mail, MapPin, Linkedin, Twitter,
+//   MessageCircle, Star, ArrowRight, Sparkles, Zap, Target, Eye,
+//   Instagram, CheckCircle, Globe, Award, Users, Clock
+// } from 'lucide-react';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faPinterest } from '@fortawesome/free-brands-svg-icons';
+// import { faMicrosoft } from '@fortawesome/free-brands-svg-icons';
 
 
-import { motion, AnimatePresence } from 'framer-motion';
+// import { motion, AnimatePresence } from 'framer-motion';
 
 const NexoraPortfolio = () => {
   return (
