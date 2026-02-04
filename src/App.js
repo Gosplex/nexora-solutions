@@ -114,7 +114,7 @@ const NexoraPortfolio = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#012D3E] to-[#0A9BEA]">
+    <div className="min-h-screen bg-[#0f0f0f] text-[#f9f9f9]">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&display=swap');
         
@@ -127,7 +127,7 @@ const NexoraPortfolio = () => {
         }
 
         .gradient-text {
-          background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
+          background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -186,31 +186,49 @@ const NexoraPortfolio = () => {
         }
 
         .glass {
-          background: rgba(255, 255, 255, 0.1);
-          backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .glass-dark {
-          background: rgba(1, 45, 62, 0.4);
+          background: rgba(255, 255, 255, 0.05);
           backdrop-filter: blur(20px);
           border: 1px solid rgba(255, 255, 255, 0.1);
         }
+
+        .glass-dark {
+          background: rgba(31, 31, 31, 0.6);
+          backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-gradient {
+          background: linear-gradient(to bottom right, rgba(31, 31, 31, 0.9), rgba(15, 15, 15, 0.95));
+        }
       `}</style>
 
+      {/* Animated background */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute top-0 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl opacity-10"
+        />
+        <motion.div
+          animate={{ rotate: -360 }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-0 right-1/4 w-96 h-96 bg-white rounded-full blur-3xl opacity-10"
+        />
+      </div>
+
       {/* Navigation */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrollY > 50 ? 'glass-dark shadow-2xl' : 'bg-transparent'
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrollY > 50 ? 'bg-[#0f0f0f]/80 backdrop-blur-xl shadow-2xl border-b border-gray-800' : 'bg-transparent'
         }`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <div className="flex items-center gap-3 cursor-pointer" onClick={() => scrollToSection('home')}>
-              <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center shadow-lg border border-white/20">
+              <div className="w-12 h-12 rounded-xl bg-gray-800 border border-gray-700 flex items-center justify-center shadow-lg">
                 <span className="text-white font-bold text-xl">N</span>
               </div>
               <div>
                 <h1 className="font-display text-xl font-bold text-white">NEXORA</h1>
-                <p className="text-[10px] text-[#0A9BEA] font-semibold tracking-widest">SOLUTIONS</p>
+                <p className="text-[10px] text-gray-400 font-semibold tracking-widest">SOLUTIONS</p>
               </div>
             </div>
 
@@ -220,7 +238,7 @@ const NexoraPortfolio = () => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-white/90 hover:text-white font-medium transition-colors relative group"
+                  className="text-gray-300 hover:text-white font-medium transition-colors relative group"
                 >
                   {item.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300" />
@@ -228,7 +246,7 @@ const NexoraPortfolio = () => {
               ))}
               <button
                 onClick={() => setIsContactOpen(true)}
-                className="bg-white text-[#012D3E] px-6 py-2.5 rounded-full font-semibold hover:shadow-xl transform hover:scale-105 transition-all"
+                className="bg-white text-black px-6 py-2.5 rounded-lg font-semibold hover:bg-gray-200 shadow-xl transform hover:scale-105 transition-all"
               >
                 Hire Us
               </button>
@@ -237,7 +255,7 @@ const NexoraPortfolio = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden text-white hover:text-white/80 transition-colors"
+              className="lg:hidden text-white hover:text-gray-300 transition-colors"
             >
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -252,12 +270,12 @@ const NexoraPortfolio = () => {
                 exit={{ opacity: 0, height: 0 }}
                 className="lg:hidden overflow-hidden"
               >
-                <div className="py-6 space-y-4">
+                <div className="py-6 space-y-4 bg-gray-900/50 backdrop-blur-xl rounded-b-2xl">
                   {navItems.map((item) => (
                     <button
                       key={item.id}
                       onClick={() => scrollToSection(item.id)}
-                      className="block w-full text-left text-white/90 hover:text-white font-medium py-2 transition-colors"
+                      className="block w-full text-left text-gray-300 hover:text-white font-medium py-2 px-4 transition-colors"
                     >
                       {item.label}
                     </button>
@@ -267,7 +285,7 @@ const NexoraPortfolio = () => {
                       setIsContactOpen(true);
                       setIsMenuOpen(false);
                     }}
-                    className="w-full bg-white text-[#012D3E] px-6 py-3 rounded-full font-semibold"
+                    className="w-full bg-white text-black px-6 py-3 rounded-lg font-semibold mx-4"
                   >
                     Hire Us
                   </button>
@@ -280,19 +298,13 @@ const NexoraPortfolio = () => {
 
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center pt-20 bg-mesh relative overflow-hidden">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white rounded-full opacity-5 blur-3xl animate-float" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#0A9BEA] rounded-full opacity-10 blur-3xl animate-float" style={{ animationDelay: '3s' }} />
-        </div>
-
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Content */}
             <div className="space-y-8 animate-fadeInUp">
-              <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 border border-gray-700 rounded-full text-sm">
                 <Sparkles className="w-4 h-4 text-white" />
-                <span className="text-sm font-semibold text-white">Digital Excellence Awaits</span>
+                <span className="text-sm font-semibold text-gray-300">Digital Excellence Awaits</span>
               </div>
 
               <h1 className="font-display text-5xl lg:text-7xl font-bold text-white leading-tight">
@@ -303,14 +315,14 @@ const NexoraPortfolio = () => {
                 <span className="text-shadow">Success</span>
               </h1>
 
-              <p className="text-xl text-white/80 leading-relaxed max-w-xl">
+              <p className="text-xl text-gray-300 leading-relaxed max-w-xl">
                 Transform your business with cutting-edge digital solutions. From mobile apps to digital marketing, we're your strategic partner in growth.
               </p>
 
               <div className="flex flex-wrap gap-4">
                 <button
                   onClick={() => scrollToSection('services')}
-                  className="group flex items-center gap-2 bg-white text-[#012D3E] px-8 py-4 rounded-full font-semibold hover:shadow-2xl transform hover:scale-105 transition-all"
+                  className="group flex items-center gap-2 bg-white text-black px-8 py-4 rounded-lg font-semibold hover:bg-gray-200 shadow-xl transform hover:scale-105 transition-all"
                 >
                   Explore Services
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -318,7 +330,7 @@ const NexoraPortfolio = () => {
 
                 <button
                   onClick={() => setIsContactOpen(true)}
-                  className="flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#012D3E] transition-all"
+                  className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 text-white px-8 py-4 rounded-lg font-semibold transition-all"
                 >
                   Get In Touch
                   <MessageCircle className="w-5 h-5" />
@@ -330,7 +342,7 @@ const NexoraPortfolio = () => {
                 {stats.map((stat, i) => (
                   <div key={i} className="text-center">
                     <div className="font-display text-3xl font-bold text-white">{stat.value}</div>
-                    <div className="text-sm text-white/70 mt-1">{stat.label}</div>
+                    <div className="text-sm text-gray-400 mt-1">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -341,7 +353,7 @@ const NexoraPortfolio = () => {
               <div className="relative aspect-square max-w-lg mx-auto">
                 {/* Central Circle */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-64 h-64 rounded-full bg-white/10 backdrop-blur-xl flex items-center justify-center shadow-2xl border border-white/20">
+                  <div className="w-64 h-64 rounded-full bg-gradient-to-br from-gray-900 to-[#0f0f0f] border border-gray-800 flex items-center justify-center shadow-2xl">
                     <div className="text-center text-white">
                       <div className="text-6xl font-bold mb-2">NS</div>
                       <div className="text-sm font-semibold tracking-wider">INNOVATION</div>
@@ -358,7 +370,7 @@ const NexoraPortfolio = () => {
                 ].map((item, i) => (
                   <div
                     key={i}
-                    className="absolute w-16 h-16 glass rounded-2xl flex items-center justify-center text-2xl shadow-lg animate-float"
+                    className="absolute w-16 h-16 bg-gray-900 border border-gray-800 rounded-2xl flex items-center justify-center text-2xl shadow-lg animate-float"
                     style={{ ...item.style, animationDelay: `${item.delay}s` }}
                   >
                     {item.icon}
@@ -371,20 +383,20 @@ const NexoraPortfolio = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-32 relative">
-        <div className="absolute inset-0 bg-black/10" />
+      <section id="about" className="py-32 relative border-t border-gray-800">
+        <div className="absolute inset-0 bg-[#0f0f0f]/80 backdrop-blur-sm" />
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 border border-gray-700 rounded-full text-sm mb-6">
               <Target className="w-4 h-4 text-white" />
-              <span className="text-sm font-semibold text-white">Who We Are</span>
+              <span className="text-sm font-semibold text-gray-300">Who We Are</span>
             </div>
 
             <h2 className="font-display text-5xl lg:text-6xl font-bold mb-6">
               <span className="gradient-text">About Nexora Solutions</span>
             </h2>
 
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               We're a team of innovators and problem-solvers dedicated to delivering cutting-edge digital solutions that drive real business results.
             </p>
           </div>
@@ -413,14 +425,14 @@ const NexoraPortfolio = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group relative p-8 rounded-2xl glass-dark hover:bg-white/10 border border-white/20 hover:border-white/30 transition-all hover-lift"
+                className="group relative p-8 rounded-2xl card-gradient border border-gray-800 hover:border-gray-700 transition-all hover-lift"
               >
-                <div className="w-16 h-16 mb-6 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow border border-white/20">
+                <div className="w-16 h-16 mb-6 rounded-2xl bg-gray-800 border border-gray-700 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
                   <item.icon className="w-8 h-8 text-white" />
                 </div>
 
                 <h3 className="font-display text-2xl font-bold text-white mb-4">{item.title}</h3>
-                <p className="text-white/70 leading-relaxed">{item.description}</p>
+                <p className="text-gray-400 leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -428,14 +440,13 @@ const NexoraPortfolio = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-32 relative">
-        <div className="absolute inset-0 bg-white/5" />
+      <section className="py-32 relative bg-[#0f0f0f]/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h2 className="font-display text-5xl lg:text-6xl font-bold mb-6">
               <span className="gradient-text">Why Choose Nexora?</span>
             </h2>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
               Experience, expertise, and excellence in every project we deliver.
             </p>
           </div>
@@ -448,13 +459,13 @@ const NexoraPortfolio = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="text-center p-8 rounded-2xl glass-dark shadow-lg hover:shadow-2xl transition-all hover-lift border border-white/20"
+                className="text-center p-8 rounded-2xl card-gradient border border-gray-800 shadow-lg hover:shadow-2xl transition-all hover-lift"
               >
-                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center shadow-lg border border-white/20">
+                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gray-800 border border-gray-700 flex items-center justify-center shadow-lg">
                   <item.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-white mb-3">{item.title}</h3>
-                <p className="text-white/70 leading-relaxed">{item.desc}</p>
+                <p className="text-gray-400 leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -464,7 +475,7 @@ const NexoraPortfolio = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative p-12 lg:p-16 rounded-3xl bg-white/10 backdrop-blur-xl text-white text-center overflow-hidden border border-white/20"
+            className="relative p-12 lg:p-16 rounded-3xl bg-gradient-to-br from-gray-900 via-[#0f0f0f] to-black border-2 border-gray-800 text-white text-center overflow-hidden shadow-2xl"
           >
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9Ii4xIi8+PC9nPjwvc3ZnPg==')] opacity-10" />
 
@@ -472,12 +483,12 @@ const NexoraPortfolio = () => {
               <h3 className="font-display text-3xl lg:text-4xl font-bold mb-4">
                 Ready to Transform Your Business?
               </h3>
-              <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+              <p className="text-xl mb-8 text-gray-300 max-w-2xl mx-auto">
                 Let's discuss how we can help you achieve your digital goals.
               </p>
               <button
                 onClick={() => setIsContactOpen(true)}
-                className="bg-white text-[#012D3E] px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition-all"
+                className="bg-white text-black px-10 py-4 rounded-lg font-bold text-lg hover:bg-gray-200 shadow-xl transform hover:scale-105 transition-all"
               >
                 Get Free Consultation
               </button>
@@ -487,19 +498,18 @@ const NexoraPortfolio = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-32 relative">
-        <div className="absolute inset-0 bg-black/10" />
+      <section id="services" className="py-32 relative border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 border border-gray-700 rounded-full text-sm mb-6">
               <Sparkles className="w-4 h-4 text-white" />
-              <span className="text-sm font-semibold text-white">What We Offer</span>
+              <span className="text-sm font-semibold text-gray-300">What We Offer</span>
             </div>
 
             <h2 className="font-display text-5xl lg:text-6xl font-bold mb-6">
               <span className="gradient-text">Our Services</span>
             </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Comprehensive digital solutions designed to accelerate your business growth and digital transformation.
             </p>
           </div>
@@ -514,10 +524,10 @@ const NexoraPortfolio = () => {
                 transition={{ delay: i * 0.1 }}
                 onMouseEnter={() => setActiveService(i)}
                 onMouseLeave={() => setActiveService(null)}
-                className="group relative glass-dark p-8 rounded-2xl border border-white/20 hover:border-white/30 transition-all hover-lift overflow-hidden"
+                className="group relative card-gradient p-8 rounded-2xl border border-gray-800 hover:border-gray-700 transition-all hover-lift overflow-hidden"
               >
                 {/* Background Gradient on Hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-10 transition-opacity`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity`} />
 
                 <div className="relative z-10">
                   <div className="text-5xl mb-6 transform group-hover:scale-110 transition-transform">
@@ -528,7 +538,7 @@ const NexoraPortfolio = () => {
                     {service.title}
                   </h3>
 
-                  <p className="text-white/70 mb-6 leading-relaxed">
+                  <p className="text-gray-400 mb-6 leading-relaxed group-hover:text-gray-300 transition-colors">
                     {service.description}
                   </p>
 
@@ -542,7 +552,7 @@ const NexoraPortfolio = () => {
                         className="space-y-2 mb-6"
                       >
                         {service.features.map((feature, j) => (
-                          <div key={j} className="flex items-center gap-2 text-sm text-white/80">
+                          <div key={j} className="flex items-center gap-2 text-sm text-gray-300">
                             <CheckCircle className="w-4 h-4 text-white flex-shrink-0" />
                             <span>{feature}</span>
                           </div>
@@ -558,19 +568,18 @@ const NexoraPortfolio = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-32 relative">
-        <div className="absolute inset-0 bg-white/5" />
+      <section id="testimonials" className="py-32 relative bg-[#0f0f0f]/30 border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 border border-gray-700 rounded-full text-sm mb-6">
               <Star className="w-4 h-4 text-white" />
-              <span className="text-sm font-semibold text-white">Client Success Stories</span>
+              <span className="text-sm font-semibold text-gray-300">Client Success Stories</span>
             </div>
 
             <h2 className="font-display text-5xl lg:text-6xl font-bold mb-6">
               <span className="gradient-text">What Our Clients Say</span>
             </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Real experiences from businesses we've helped transform.
             </p>
           </div>
@@ -583,7 +592,7 @@ const NexoraPortfolio = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="glass-dark p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all hover-lift border border-white/20"
+                className="card-gradient p-8 rounded-2xl border border-gray-800 shadow-lg hover:shadow-2xl transition-all hover-lift"
               >
                 <div className="flex gap-1 mb-6">
                   {[...Array(testimonial.rating)].map((_, j) => (
@@ -591,17 +600,17 @@ const NexoraPortfolio = () => {
                   ))}
                 </div>
 
-                <p className="text-white/80 mb-8 leading-relaxed italic">
+                <p className="text-gray-300 mb-8 leading-relaxed italic">
                   "{testimonial.content}"
                 </p>
 
-                <div className="flex items-center gap-4 pt-6 border-t border-white/20">
-                  <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white font-bold shadow-lg border border-white/20">
+                <div className="flex items-center gap-4 pt-6 border-t border-gray-800">
+                  <div className="w-12 h-12 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-white font-bold shadow-lg">
                     {testimonial.avatar}
                   </div>
                   <div>
                     <p className="font-bold text-white">{testimonial.name}</p>
-                    <p className="text-sm text-white/60">{testimonial.position}</p>
+                    <p className="text-sm text-gray-500">{testimonial.position}</p>
                   </div>
                 </div>
               </motion.div>
@@ -702,13 +711,13 @@ const NexoraPortfolio = () => {
       </AnimatePresence>
 
       {/* Footer */}
-      <footer className="bg-black/20 backdrop-blur-sm text-white py-20 border-t border-white/10">
+      <footer className="bg-[#0f0f0f] text-white py-20 border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
             {/* Company Info */}
             <div className="lg:col-span-2">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
+                <div className="w-12 h-12 rounded-xl bg-gray-800 border border-gray-700 flex items-center justify-center">
                   <span className="text-white font-bold text-xl">N</span>
                 </div>
                 <div>
@@ -716,7 +725,7 @@ const NexoraPortfolio = () => {
                 </div>
               </div>
 
-              <p className="text-white/70 mb-6 leading-relaxed max-w-md">
+              <p className="text-gray-400 mb-6 leading-relaxed max-w-md">
                 The Aura Behind Your Success. Delivering cutting-edge digital solutions that transform businesses.
               </p>
 
@@ -731,7 +740,7 @@ const NexoraPortfolio = () => {
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 flex items-center justify-center transition-all hover:scale-110 border border-white/20"
+                    className="w-10 h-10 rounded-full bg-gray-800 border border-gray-700 hover:bg-gray-700 flex items-center justify-center transition-all hover:scale-110"
                   >
                     <item.Icon size={18} />
                   </a>
@@ -742,7 +751,7 @@ const NexoraPortfolio = () => {
             {/* Services */}
             <div>
               <h3 className="font-display text-lg font-bold mb-6">Services</h3>
-              <ul className="space-y-3 text-white/70">
+              <ul className="space-y-3 text-gray-400">
                 {["Mobile Apps", "Web Development", "UI/UX Design", "Digital Marketing", "IT Staffing", "Custom Software"].map((item) => (
                   <li key={item}>
                     <a href="#services" className="hover:text-white transition-colors">
@@ -756,7 +765,7 @@ const NexoraPortfolio = () => {
             {/* Company */}
             <div>
               <h3 className="font-display text-lg font-bold mb-6">Company</h3>
-              <ul className="space-y-3 text-white/70">
+              <ul className="space-y-3 text-gray-400">
                 {["About Us", "Careers", "Privacy Policy"].map((item) => (
                   <li key={item}>
                     <a href="#about" className="hover:text-white transition-colors">
@@ -770,7 +779,7 @@ const NexoraPortfolio = () => {
             {/* Contact */}
             <div>
               <h3 className="font-display text-lg font-bold mb-6">Contact</h3>
-              <div className="space-y-4 text-white/70">
+              <div className="space-y-4 text-gray-400">
                 <div className="flex items-start gap-3">
                   <Mail size={18} className="mt-0.5 flex-shrink-0" />
                   <span className="text-sm">info@nexorasolution.com</span>
@@ -798,7 +807,7 @@ const NexoraPortfolio = () => {
             </div>
           </div>
 
-          <div className="pt-8 border-t border-white/10 text-center text-white/50 text-sm">
+          <div className="pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
             © 2025 Nexora Solutions. All rights reserved. Crafted with ❤️ in India
           </div>
         </div>
