@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   Menu, X, Phone, Mail, MapPin, Linkedin, Twitter, Instagram,
   ArrowRight, Sparkles, Zap, Target, Eye, Award, Users, Clock,
-  CheckCircle, Globe, Star, MessageCircle, ChevronRight
+  CheckCircle, Globe, Star, MessageCircle,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
